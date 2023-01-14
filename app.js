@@ -19,40 +19,58 @@ const limparTarefa = () =>{
     const todoList = document.getElementById('todoList');
     while (todoList.firstChild){
         todoList.removeChild(todoList.lastChild)
+    // enquanto existir o primeiro filho ele remove o ultimo
     }
 }
 const atualizarTela = () => {
     limparTarefa();
     banco.forEach(
-        (item, indice) => criarItem (item.tarefa, item.status));
+        (item, indice) => criarItem (item.tarefa, item.status, indice));
+    // ele manda para criar o item a tarefa, status e o indice
+}
+
+const verificarCampo = () =>{
+    if(document.getElementById("newItem").value == ""){
+        alert('Preencha o campo com a tarefa!');
+        document.getElementById("newItem").focus
+        return false;
+    } else {
+        return true;
+    }
 }
 
 const inserirItem = (evento) => {
     const tecla = evento.key;
+    // pega a tecla digitada
     const texto = evento.target.value
+    // target é o alvo e value pega o valor desse alvo
 
     console.log (tecla);
-    if(tecla === 'Enter'){
+    if(tecla == 'Enter'){
+        if (verificarCampo() == true ){
         banco.push ({'tarefa': texto, 'status': ''})
-        atualizarTela();
+        atualizarTela(); 
         evento.target.value = '';
-    }
+        
+        }
+    } 
 }
+
 const removerItem = (indice) => {
     banco.splice (indice, 1);
     atualizarTela();
 }
 const atualizarItem = (indice) => {
-    banco[indice].status = banco[indice].status === '' ? 'checked' : '';
+    banco[indice].status = banco[indice].status == '' ? 'checked' : '';
     atualizarTela;
 }
 const clickItem = (evento) => {
     const elemento = evento.target;
     if(elemento.type === 'button'){
-        const indice = elemento.dataset.indice
-        removerItem(indice);
-    }else if (elemento.tyoe === 'checkbox'){
-        const indice = elemento.dataset.indice
+        const indice = elemento.dataset.indice;
+        removerItem (indice);
+    } else if (elemento.type === 'checkbox'){
+        const indice = elemento.dataset.indice;
         atualizarItem (indice);
     }
 }
