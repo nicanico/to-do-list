@@ -118,7 +118,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-.modal-container.mostrar{
+
+.mostrar{
     display: flex;
 }
 .modal{

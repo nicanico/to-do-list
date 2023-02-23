@@ -31,13 +31,14 @@ const atualizarTela = () => {
 
 const carregarModal = (modalID) => {
     const modal = document.getElementById(modalID)
-    console.log(modal)
+    modal.classList.add('mostrar')
 }
+
+
 
 const verificarCampo = () => {
     if (document.getElementById("newItem").value == "") {
-        carregarModal()
-        alert('Preencha o campo com a tarefa!');
+        carregarModal('modalAviso')
         document.getElementById("newItem").focus
         return false;
     } else {
