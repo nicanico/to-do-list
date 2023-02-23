@@ -1,9 +1,9 @@
 :root{
-    --red-color: #730202;
-    --background-color: #260101 ;
+    --red-color: #E3ACF9;
+    --background-color: #FBF1D3 ;
     --black-color: #000;
-    --yellow-color: #f2b705;
-    --orange-color: #d97904;
+    --yellow-color: #FADA9D;
+    --orange-color: #E3ACF9;
 }
 *{
     margin: 0;
@@ -105,4 +105,50 @@ body{
 .new-item-todo>input::placeholder {
     font-style: italic;
     font-weight: normal;
+}
+.modal-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.modal-container.mostrar{
+    display: flex;
+}
+.modal{
+    background-color: #FBF1D3;
+    width: 60%;
+    min-width: 300px;
+    padding: 40px;
+    border: 5px solid #E3ACF9;
+    position: relative;
+}
+
+.fechar{
+    position: absolute;
+    font-size: 2rem;
+    top: -30px;
+    right: -30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background: #BA94D1;
+    color: #FBF1D3;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
+}
+.titulo-modal{
+    font-size: 3rem;
+    color: var(--orange-color);
+}
+.texto{
+    font-size: 1.5rem;
+    color: #BA94D1;
 }

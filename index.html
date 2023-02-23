@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
     <title>To-do-list</title>
 </head>
 <body>
@@ -23,6 +24,13 @@
             <input type="text" id="newItem" placeholder="Escreva e pressione Enter para inserir sua tarefa a lista.">
         </div>
     </div>
-    <script src="app.js"></script>
+    
+    <div id="modal-aviso" class="modal-container">
+        <div class="modalID">
+            <button class="fechar">X</button>
+            <h3 class="titulo-modal">Olá usuario(a)!</h3>
+            <p class="texto">Por favor, escreva sua tarefa antes de envia-la!</p>
+        </div>
+    </div>
 </body>
 </html>

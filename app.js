@@ -1,8 +1,8 @@
 'use strict';
 
 let banco = [
-    {'tarefa': 'Estudar JS', 'status': ''},
-    {'tarefa': 'netflix', 'status': 'checked'}
+    { 'tarefa': 'Estudar JS', 'status': '' },
+    { 'tarefa': 'netflix', 'status': 'checked' }
 ];
 
 const criarItem = (tarefa, status, indice) => {
@@ -15,22 +15,28 @@ const criarItem = (tarefa, status, indice) => {
     `
     document.getElementById('todoList').appendChild(item);
 }
-const limparTarefa = () =>{
+const limparTarefa = () => {
     const todoList = document.getElementById('todoList');
-    while (todoList.firstChild){
+    while (todoList.firstChild) {
         todoList.removeChild(todoList.lastChild)
-    // enquanto existir o primeiro filho ele remove o ultimo
+        // enquanto existir o primeiro filho ele remove o ultimo
     }
 }
 const atualizarTela = () => {
     limparTarefa();
     banco.forEach(
-        (item, indice) => criarItem (item.tarefa, item.status, indice));
+        (item, indice) => criarItem(item.tarefa, item.status, indice));
     // ele manda para criar o item a tarefa, status e o indice
 }
 
-const verificarCampo = () =>{
-    if(document.getElementById("newItem").value == ""){
+const carregarModal = (modalID) => {
+    const modal = document.getElementById(modalID)
+    console.log(modal)
+}
+
+const verificarCampo = () => {
+    if (document.getElementById("newItem").value == "") {
+        carregarModal()
         alert('Preencha o campo com a tarefa!');
         document.getElementById("newItem").focus
         return false;
@@ -45,19 +51,19 @@ const inserirItem = (evento) => {
     const texto = evento.target.value
     // target é o alvo e value pega o valor desse alvo
 
-    console.log (tecla);
-    if(tecla == 'Enter'){
-        if (verificarCampo() == true ){
-        banco.push ({'tarefa': texto, 'status': ''})
-        atualizarTela(); 
-        evento.target.value = '';
-        
+    console.log(tecla);
+    if (tecla == 'Enter') {
+        if (verificarCampo() == true) {
+            banco.push({ 'tarefa': texto, 'status': '' })
+            atualizarTela();
+            evento.target.value = '';
+
         }
-    } 
+    }
 }
 
 const removerItem = (indice) => {
-    banco.splice (indice, 1);
+    banco.splice(indice, 1);
     atualizarTela();
 }
 const atualizarItem = (indice) => {
@@ -66,12 +72,12 @@ const atualizarItem = (indice) => {
 }
 const clickItem = (evento) => {
     const elemento = evento.target;
-    if(elemento.type === 'button'){
+    if (elemento.type === 'button') {
         const indice = elemento.dataset.indice;
-        removerItem (indice);
-    } else if (elemento.type === 'checkbox'){
+        removerItem(indice);
+    } else if (elemento.type === 'checkbox') {
         const indice = elemento.dataset.indice;
-        atualizarItem (indice);
+        atualizarItem(indice);
     }
 }
 
